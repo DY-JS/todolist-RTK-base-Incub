@@ -44,7 +44,7 @@ const slice = createSlice({
     },
       clearTasksData: (state) => {
         return {}
-          // или
+         // или
         // const newState = {...state}
         //  Object.keys(newState).forEach(i => {
         //     if (newState.hasOwnProperty(i)) {delete newState[i]}
