@@ -33,7 +33,7 @@ const slice = createSlice({
       if (index !== -1) {
         tasksForCurrentTodolist[index] = { ...tasksForCurrentTodolist[index], ...action.payload.model }
       }
-      // ❗❗❗❗❗
+      // ❗❗❗❗❗ не работает
       // let task = state.tasksForCurrentTodolist.find((task) => task.id === action.payload.taskId)
       // if (task) {
       //   task = {...task, ...action.payload.model}
