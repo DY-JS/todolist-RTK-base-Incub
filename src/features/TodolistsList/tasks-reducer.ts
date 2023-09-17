@@ -4,6 +4,8 @@ import { appActions } from "app/app-reducer"
 import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { todolistsActions } from "features/TodolistsList/todolists-reducer"
+import {ClearTasksAndTodolists} from "common/actions/common.actions";
+
 
 // {
 //   'todoid1': [{id:asdasd, title: 'fsdf'}],
@@ -42,15 +44,15 @@ const slice = createSlice({
     setTasks: (state, action: PayloadAction<{ tasks: TaskType[]; todolistId: string }>) => {
       state[action.payload.todolistId] = action.payload.tasks
     },
-      clearTasksData: (state) => {
-        return {}
-         // или
-        // const newState = {...state}
-        //  Object.keys(newState).forEach(i => {
-        //     if (newState.hasOwnProperty(i)) {delete newState[i]}
-        // })
-        //   return newState
-      }
+      // clearTasksData: (state) => {
+      //   return {}
+      //    // или
+      //   // const newState = {...state}
+      //   //  Object.keys(newState).forEach(i => {
+      //   //     if (newState.hasOwnProperty(i)) {delete newState[i]}
+      //   // })
+      //   //   return newState
+      // }
   },
    //В extraReducers описываем логику при наступлении экшна из другого редьюсура
   extraReducers: (builder) => {
@@ -66,6 +68,12 @@ const slice = createSlice({
           state[tl.id] = []
         })
       })
+        .addCase(ClearTasksAndTodolists.type, () => {
+            return {}
+        })
+      // .addCase(ClearTasksAndTodolists, (state, action) => {  2-й вариант с типом и payload
+      //     return action.payload.tasks
+      // })
   },
 })
 
